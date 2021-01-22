@@ -32,5 +32,6 @@
     "sass": "^1.32.4",
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0"
-  }
+  },
+  "cacheDirectories": ["client/node_modules", "node_modules"]
 }
