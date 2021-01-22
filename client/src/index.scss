@@ -1,0 +1,246 @@
+html,
+body,
+#app {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  color: #bbbbbb;
+}
+
+#app {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: url('./assets/bg.jpg');
+  background-size: cover;
+}
+
+.center-wrapper {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+$window-radius: 11px;
+
+.container {
+  width: 600px;
+  height: calc(100%);
+  margin: auto;
+  overflow-x: auto;
+  padding: 0px 30px;
+  padding-top: 15px;
+  > div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.window {
+  background: #35363a;
+  border-radius: $window-radius;
+  border: #4c4d51 solid 1px;
+  box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.6);
+  .header {
+    border-top-left-radius: $window-radius;
+    border-top-right-radius: $window-radius;
+    height: 35px;
+    background: #202125;
+    display: flex;
+    align-items: center;
+    span {
+      color: rgb(187, 187, 187);
+      margin-left: 10px;
+      font-weight: bold;
+    }
+    input {
+      color: rgb(187, 187, 187);
+      margin-left: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      background: none;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      padding: 5px 10px;
+      width: 85%;
+      &:hover {
+        background: #151618;
+      }
+      &:focus {
+        background: #151618;
+      }
+    }
+    .circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-left: 8px;
+      &.first {
+        margin-left: 15px;
+      }
+      &.red {
+        background-color: #f76357;
+      }
+      &.yellow {
+        background-color: #fbbe28;
+      }
+      &.green {
+        background-color: #27c23a;
+      }
+      &.close {
+        &:hover {
+          background: url('./assets/close.svg') no-repeat center center / 10px,
+            #f76357;
+        }
+      }
+    }
+  }
+  .main {
+    height: calc(100% - 35px);
+  }
+}
+
+.inp {
+  background-color: #424242;
+  border: 1px solid transparent;
+  width: calc(100% - 100px);
+  border-radius: 25px;
+  font-size: 20px;
+  padding: 5px 10px;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+  &:hover {
+    border: #377ef6 solid 1px;
+  }
+  &:focus {
+    border: #377ef6 solid 1px;
+  }
+}
+
+.btn {
+  padding: 8px 20px;
+  color: rgb(238, 238, 238);
+  font-size: 20px;
+  border-radius: 11px;
+  outline: none;
+  margin-top: 10px;
+  &.green {
+    $color: #2ea043;
+    $color-darker: #238636;
+    background: $color-darker;
+    border: solid 1px $color;
+    &:hover {
+      background: $color;
+      border: solid 1px $color;
+    }
+
+    &:active {
+      background: $color-darker;
+    }
+  }
+  &.blue {
+    $color: #377ef6;
+    $color-darker: #2454a7;
+    background: $color-darker;
+    border: solid 1px $color;
+    &:hover {
+      background: $color;
+      border: solid 1px $color;
+    }
+
+    &:active {
+      background: $color-darker;
+    }
+  }
+  &.red {
+    $color: #f76357;
+    $color-darker: #a8453c;
+    background: $color-darker;
+    border: solid 1px $color;
+    &:hover {
+      background: $color;
+      border: solid 1px $color;
+    }
+
+    &:active {
+      background: $color-darker;
+    }
+  }
+  &.dark {
+    $color: #42444b;
+    $color-darker: #282a2e;
+    background: $color-darker;
+    border: solid 1px $color;
+    &:hover {
+      background: $color;
+      border: solid 1px $color;
+    }
+
+    &:active {
+      background: $color-darker;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 25px;
+  top: 0;
+  // background-color: #151618;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  user-select: none;
+  .logo {
+    width: 25px;
+    height: 25px;
+    background: url('./assets/pear.svg') no-repeat center / 18px;
+    // background: #ffffff;
+  }
+  .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > span {
+      max-width: 150px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    &.logout {
+      padding: 0px 10px;
+      padding-top: 1px;
+      margin: 2px 0px;
+    }
+    &.logout:hover {
+      background-color: #202125;
+      border-radius: 11px;
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

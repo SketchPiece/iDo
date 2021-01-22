@@ -1,0 +1,277 @@
+html,
+body,
+#app {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  color: #bbbbbb;
+}
+
+#app {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: url("./assets/bg.jpg");
+  background-size: cover;
+}
+
+.center-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container {
+  width: 600px;
+  height: calc(100%);
+  margin: auto;
+  overflow-x: auto;
+  padding: 0px 30px;
+  padding-top: 15px;
+}
+
+.container > div {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.window {
+  background: #35363a;
+  border-radius: 11px;
+  border: #4c4d51 solid 1px;
+  -webkit-box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.6);
+          box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.6);
+}
+
+.window .header {
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  height: 35px;
+  background: #202125;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.window .header span {
+  color: #bbbbbb;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.window .header input {
+  color: #bbbbbb;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: 85%;
+}
+
+.window .header input:hover {
+  background: #151618;
+}
+
+.window .header input:focus {
+  background: #151618;
+}
+
+.window .header .circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.window .header .circle.first {
+  margin-left: 15px;
+}
+
+.window .header .circle.red {
+  background-color: #f76357;
+}
+
+.window .header .circle.yellow {
+  background-color: #fbbe28;
+}
+
+.window .header .circle.green {
+  background-color: #27c23a;
+}
+
+.window .header .circle.close:hover {
+  background: url("./assets/close.svg") no-repeat center center/10px, #f76357;
+}
+
+.window .main {
+  height: calc(100% - 35px);
+}
+
+.inp {
+  background-color: #424242;
+  border: 1px solid transparent;
+  width: calc(100% - 100px);
+  border-radius: 25px;
+  font-size: 20px;
+  padding: 5px 10px;
+  color: white;
+  outline: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.inp:hover {
+  border: #377ef6 solid 1px;
+}
+
+.inp:focus {
+  border: #377ef6 solid 1px;
+}
+
+.btn {
+  padding: 8px 20px;
+  color: #eeeeee;
+  font-size: 20px;
+  border-radius: 11px;
+  outline: none;
+  margin-top: 10px;
+}
+
+.btn.green {
+  background: #238636;
+  border: solid 1px #2ea043;
+}
+
+.btn.green:hover {
+  background: #2ea043;
+  border: solid 1px #2ea043;
+}
+
+.btn.green:active {
+  background: #238636;
+}
+
+.btn.blue {
+  background: #2454a7;
+  border: solid 1px #377ef6;
+}
+
+.btn.blue:hover {
+  background: #377ef6;
+  border: solid 1px #377ef6;
+}
+
+.btn.blue:active {
+  background: #2454a7;
+}
+
+.btn.red {
+  background: #a8453c;
+  border: solid 1px #f76357;
+}
+
+.btn.red:hover {
+  background: #f76357;
+  border: solid 1px #f76357;
+}
+
+.btn.red:active {
+  background: #a8453c;
+}
+
+.btn.dark {
+  background: #282a2e;
+  border: solid 1px #42444b;
+}
+
+.btn.dark:hover {
+  background: #42444b;
+  border: solid 1px #42444b;
+}
+
+.btn.dark:active {
+  background: #282a2e;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 25px;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  padding: 0px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+header .logo {
+  width: 25px;
+  height: 25px;
+  background: url("./assets/pear.svg") no-repeat center/18px;
+}
+
+header .text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 150px;
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+header .text.logout {
+  padding: 0px 10px;
+  padding-top: 1px;
+  margin: 2px 0px;
+}
+
+header .text.logout:hover {
+  background-color: #202125;
+  border-radius: 11px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+/*# sourceMappingURL=index.css.map */
