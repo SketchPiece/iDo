@@ -89,8 +89,5 @@
     "client/node_modules",
     "node_modules"
   ],
-  "heroku-run-build-script": true,
-  "optionalDependencies": {
-    "sqlite3": "^5.0.1"
-  }
+  "heroku-run-build-script": true
 }
