@@ -85,6 +85,12 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   },
-  "cacheDirectories": ["client/node_modules", "node_modules"],
-  "heroku-run-build-script": true
+  "cacheDirectories": [
+    "client/node_modules",
+    "node_modules"
+  ],
+  "heroku-run-build-script": true,
+  "optionalDependencies": {
+    "sqlite3": "^5.0.1"
+  }
 }
