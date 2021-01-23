@@ -11,7 +11,7 @@
   >
     <div v-if="dialog" class="modal pf window">
       <div class="header">
-        <div class="circle red first close"></div>
+        <div @click="close" class="circle red first close"></div>
         <span>Add new project</span>
       </div>
       <div class="main">
