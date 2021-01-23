@@ -54,6 +54,7 @@ export default {
     },
     close() {
       this.dialog = false
+      this.projectName = ''
     },
     save() {
       if (!this.projectName) return
