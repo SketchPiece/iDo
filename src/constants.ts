@@ -1,7 +1,7 @@
-export const jwtSecret = 'supersecretsecretcode'
-export const jwtExpiresIn = 60 * 60
+export const JWT_SECRET = 'supersecretsecretcode'
+export const JWT_EXPIRES_IN = 60 * 60
 
-export const DBOptions =
+export const DB_OPTIONS =
   process.env.NODE_ENV === 'dev'
     ? {
         type: 'sqlite',

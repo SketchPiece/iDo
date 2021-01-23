@@ -2,7 +2,7 @@ import { ConflictException, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { User } from 'src/models/user.entity'
 import { UsersService } from '../users/users.service'
-import { jwtExpiresIn } from '../constants'
+import { JWT_EXPIRES_IN } from '../constants'
 
 @Injectable()
 export class AuthService {
@@ -29,7 +29,7 @@ export class AuthService {
     const payload = { username: user.username, sub: user.id }
     return {
       token: this.jwtService.sign(payload),
-      exp: Date.now() + jwtExpiresIn * 1000,
+      exp: Date.now() + JWT_EXPIRES_IN * 1000,
       username: user.username
     }
   }
@@ -40,7 +40,7 @@ export class AuthService {
     const payload = { username: newUser.username, sub: newUser.id }
     return {
       token: this.jwtService.sign(payload),
-      exp: Date.now() + jwtExpiresIn * 1000,
+      exp: Date.now() + JWT_EXPIRES_IN * 1000,
       username: newUser.username
     }
   }
