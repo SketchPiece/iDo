@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="./img/pear.svg" width="100" alt="Nest Logo" /></a>
+  <a href="https://ido-todo.herokuapp.com/" target="blank"><img src="./img/pear.svg" width="100" alt="iDo Logo" /></a>
 </p>
 
 <h1 align="center">iDo</h1>
