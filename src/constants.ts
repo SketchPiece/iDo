@@ -1,5 +1,5 @@
 export const JWT_SECRET = 'supersecretsecretcode'
-export const JWT_EXPIRES_IN = 60 * 60
+export const JWT_EXPIRES_IN = 60 * 60 * 24
 
 export const DB_OPTIONS =
   process.env.NODE_ENV === 'dev'
