@@ -8,6 +8,8 @@
 
 An advanced todo application made in the style of macOS Big Sur
 
+![img](./img/screenshot.png)
+
 ## Technologies
 
 - [Nest.js](https://nestjs.com/)
