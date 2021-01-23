@@ -1,5 +1,6 @@
 export const jwtSecret = 'supersecretsecretcode'
 export const jwtExpiresIn = 60 * 60
+
 export const DBOptions =
   process.env.NODE_ENV === 'dev'
     ? {
