@@ -56,6 +56,7 @@ export default {
       this.dialog = false
     },
     save() {
+      if (!this.projectName) return
       this.dialog = false
       this.$emit('create', { name: this.projectName })
       this.projectName = ''

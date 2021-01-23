@@ -78,6 +78,7 @@ export default {
   },
   methods: {
     addTask() {
+      if (!this.inputText) return
       this.$emit('addTask', this.inputText)
       this.inputText = ''
     },
