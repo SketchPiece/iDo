@@ -78,7 +78,7 @@ export default {
       this.dialog = false
       const task = {
         text: this.text,
-        deadline: this.deadline ? this.deadline : undefined,
+        deadline: this.deadline ? this.deadline : null,
         completed: this.completed
       }
       this.clear()
