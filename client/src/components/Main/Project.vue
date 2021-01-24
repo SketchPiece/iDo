@@ -112,7 +112,7 @@ export default {
 
 <style lang="scss" scoped>
 .tasks {
-  min-height: 200px;
+  min-height: 150px;
 }
 .main {
   position: relative;

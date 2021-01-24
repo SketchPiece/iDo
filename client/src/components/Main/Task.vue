@@ -69,6 +69,9 @@ export default {
   margin: 10px;
   border-radius: 10px;
   position: relative;
+  .strike {
+    padding-top: 3px;
+  }
   span.expired {
     color: #cc4c4c;
   }
