@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { User } from 'src/models/user.entity'
 import { Repository } from 'typeorm'
+import { createHmac } from 'crypto'
 
 @Injectable()
 export class UsersService {
@@ -20,6 +21,7 @@ export class UsersService {
 
   async create(user: User): Promise<User | null> {
     try {
+      user.password = createHmac('sha256', user.password).digest('hex')
       return await this.userRepository.save(user)
     } catch {
       return null

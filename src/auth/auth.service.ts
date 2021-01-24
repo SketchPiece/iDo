@@ -1,6 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import { User } from 'src/models/user.entity'
+import {createHmac} from 'crypto'
+import { User } from '../models/user.entity'
 import { UsersService } from '../users/users.service'
 import { JWT_EXPIRES_IN } from '../constants'
 
@@ -13,7 +14,8 @@ export class AuthService {
 
   async validateUser(username: string, pass: string): Promise<any> {
     const user = await this.usersService.getOne(username)
-    if (user && user.password === pass) {
+    const cryptoPass = createHmac('sha256', pass).digest('hex')
+    if (user && user.password === cryptoPass) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...result } = user
       return result
