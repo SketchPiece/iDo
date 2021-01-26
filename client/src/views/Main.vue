@@ -9,6 +9,7 @@
       @addTask="text => addTask(project.id, text)"
       @editTask="editTask"
       @updateTaskState="editTaskState"
+      @updateTaskPriority="editTask"
       @deleteTask="deleteTask"
       @editProject="p => editProject(project.id, p)"
       @deleteProject="deleteProject"
@@ -22,7 +23,7 @@ import Project from '../components/Main/Project'
 import AddProject from '../components/Main/AddProject'
 import { ProjectService } from '../services/project.service'
 import { TaskService } from '../services/task.service'
-import { byDate } from './main.utils'
+import { byDate } from '../utils'
 
 export default {
   components: {

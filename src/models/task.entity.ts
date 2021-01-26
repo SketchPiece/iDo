@@ -23,6 +23,9 @@ export class Task {
   @Column({ nullable: true })
   deadline: Date
 
+  @Column({ default: false })
+  priority: boolean
+
   @CreateDateColumn()
   created: Date
 

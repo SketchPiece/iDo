@@ -1,4 +1,10 @@
-import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator'
+import {
+  IsBoolean,
+  IsDateString,
+  IsNumber,
+  IsOptional,
+  IsString
+} from 'class-validator'
 
 export class UpdateTaskDto {
   @IsOptional()
@@ -9,8 +15,13 @@ export class UpdateTaskDto {
   @IsNumber()
   projectId?: number
 
+  @IsOptional()
   @IsBoolean()
   completed: boolean
+
+  @IsOptional()
+  @IsBoolean()
+  priority: boolean
 
   @IsOptional()
   @IsDateString()

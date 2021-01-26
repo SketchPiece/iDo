@@ -22,7 +22,6 @@ export default {
     register({ username, password }) {
       AuthService.makeRegister(username, password)
         .then(() => {
-          console.log('aaaa')
           this.$router.push({ name: 'main' })
         })
         .catch(({ response }) => {

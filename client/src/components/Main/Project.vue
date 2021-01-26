@@ -13,13 +13,17 @@
           :text="task.text"
           :deadline="task.deadline"
           :completed="task.completed"
+          :priority="task.priority"
+          @updatePriority="
+            state =>
+              $emit('updateTaskPriority', task.id, {
+                priority: state
+              })
+          "
           @updateState="
             state =>
               $emit('updateTaskState', task.id, {
-                text: task.text,
-                deadline: task.deadline,
-                completed: state,
-                projectId: id
+                completed: state
               })
           "
         />

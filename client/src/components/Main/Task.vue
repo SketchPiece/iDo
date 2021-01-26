@@ -12,6 +12,15 @@
         deadlineFormatted
       }}</span>
     </div>
+    <div class="bookmark-wrap">
+      <input
+        @click.stop
+        @change="updatePriority($event)"
+        type="checkbox"
+        class="bookmark"
+        :checked="taskPriority"
+      />
+    </div>
   </div>
 </template>
 
@@ -22,7 +31,8 @@ export default {
   props: {
     text: String,
     deadline: String,
-    completed: Boolean
+    completed: Boolean,
+    priority: Boolean
   },
   components: {
     Checkbox
@@ -30,13 +40,18 @@ export default {
   data() {
     return {
       taskState: this.completed,
-      taskText: this.text
+      taskText: this.text,
+      taskPriority: this.priority
     }
   },
   methods: {
     checkHandler(state) {
       this.taskState = state
       this.$emit('updateState', state)
+    },
+    updatePriority({ target: { checked } }) {
+      this.taskPriority = checked
+      this.$emit('updatePriority', checked)
     }
   },
   computed: {
@@ -69,6 +84,33 @@ export default {
   margin: 10px;
   border-radius: 10px;
   position: relative;
+  transition: 0.3s;
+  .bookmark-wrap {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    .bookmark {
+      position: relative;
+      width: 25px;
+      height: 25px;
+      appearance: none;
+      outline: none;
+      background: transparent;
+      cursor: pointer;
+      opacity: 0.3;
+      &:checked {
+        background: url('../../assets/bookmark_red.svg') no-repeat center;
+      }
+    }
+  }
+  .priority {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: url('../../assets/bookmark_red.svg');
+    top: 10px;
+    right: 10px;
+  }
   .strike {
     padding-top: 3px;
   }
@@ -97,6 +139,14 @@ export default {
   }
   &:hover {
     background: #202125;
+    .bookmark {
+      background: url('../../assets/bookmark_grey.svg') no-repeat center;
+      opacity: 1;
+      &:checked {
+        background: url('../../assets/bookmark_red.svg') no-repeat center;
+        opacity: 1;
+      }
+    }
   }
 }
 
