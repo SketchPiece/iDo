@@ -18,6 +18,8 @@ An advanced todo application made in the style of macOS Big Sur
 
 - [Vue3](https://v3.vuejs.org/)
 
+- [Vuex](https://vuex.vuejs.org/)
+
 - [SASS(SCSS)](https://sass-lang.com/) preprocessor
 
 ## Installation
