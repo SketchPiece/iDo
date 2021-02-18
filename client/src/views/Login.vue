@@ -1,6 +1,6 @@
 <template>
   <div class="center-wrapper ">
-    <AuthForm ref="form" :title="'Sing in to iDo'" @submit="login">
+    <AuthForm ref="form" :title="'Login to iDo'" @submit="login">
       <router-link to="/register">Sing up</router-link> if you don't
     </AuthForm>
   </div>
