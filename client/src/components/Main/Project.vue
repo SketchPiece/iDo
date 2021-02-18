@@ -7,7 +7,7 @@
     <div class="main">
       <div class="tasks">
         <Task
-          v-for="task of tasksFiltered"
+          v-for="task of tasks"
           :key="task.id"
           @click="editTask(task.id)"
           :text="task.text"
@@ -76,8 +76,7 @@ export default {
     return {
       projectName: this.name,
       active: false,
-      inputText: '',
-      currentTasks: this.tasks
+      inputText: ''
     }
   },
   methods: {

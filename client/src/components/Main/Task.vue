@@ -4,7 +4,7 @@
       <Checkbox @click.stop @check="checkHandler" :state="completed" />
     </div>
     <div class="strike">
-      <span :class="['text', { completed: taskState }]">{{ taskText }}</span>
+      <span :class="['text', { completed: taskState }]">{{ text }}</span>
     </div>
     <div v-if="deadline" class="deadline-view">
       Must be completed before
@@ -40,7 +40,6 @@ export default {
   data() {
     return {
       taskState: this.completed,
-      taskText: this.text,
       taskPriority: this.priority
     }
   },

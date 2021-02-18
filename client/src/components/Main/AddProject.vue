@@ -65,7 +65,7 @@ export default {
   },
   computed: {
     popup() {
-      return this.$store.state.popup
+      return this.$store.getters.popup
     }
   }
 }

@@ -1,6 +1,4 @@
-import { createStore } from 'vuex'
-
-export default createStore({
+export const auth = {
   state: {
     auth: false,
     username: '',
@@ -24,5 +22,10 @@ export default createStore({
     SET_POPUP(state, popup) {
       state.popup = popup
     }
+  },
+  getters: {
+    auth: state => state.auth,
+    username: state => state.username,
+    popup: state => state.popup
   }
-})
+}

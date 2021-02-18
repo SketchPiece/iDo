@@ -12,6 +12,7 @@
 
 <script>
 import { AuthService } from '../services/auth.service'
+import { mapGetters } from 'vuex'
 
 export default {
   methods: {
@@ -20,12 +21,7 @@ export default {
     }
   },
   computed: {
-    auth() {
-      return this.$store.state.auth
-    },
-    username() {
-      return this.$store.state.username
-    }
+    ...mapGetters(['auth', 'username'])
   }
 }
 </script>

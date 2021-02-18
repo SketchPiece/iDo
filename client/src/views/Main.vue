@@ -5,7 +5,7 @@
       :id="project.id"
       :key="project.id"
       :name="project.name"
-      :tasks="tasks"
+      :tasks="$store.getters.filterTasks(project.id)"
       @addTask="text => addTask(project.id, text)"
       @editTask="editTask"
       @updateTaskState="editTaskState"
@@ -21,9 +21,7 @@
 <script>
 import Project from '../components/Main/Project'
 import AddProject from '../components/Main/AddProject'
-import { ProjectService } from '../services/project.service'
-import { TaskService } from '../services/task.service'
-import { byDate } from '../utils'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -31,45 +29,40 @@ export default {
     AddProject
   },
   data: () => ({
-    projects: [],
-    tasks: []
+    // projects: []
   }),
+  computed: {
+    ...mapGetters(['tasks', 'projects'])
+  },
   async mounted() {
-    this.projects = (await ProjectService.getAll()).sort(byDate())
-    this.tasks = (await TaskService.getAll()).sort(byDate())
-    const addProjectPopup = !this.projects.length
-    this.$store.commit('SET_POPUP', addProjectPopup)
+    await this.$store.dispatch('fetchProjects')
+    await this.$store.dispatch('fetchTasks')
+    await this.$store.commit('SET_POPUP', !this.projects.length)
   },
   methods: {
-    async addTask(projectId, text) {
-      const task = await TaskService.add({ projectId, text })
-      this.tasks.unshift(task)
+    filterTasks(id) {
+      return this.tasks.filter(t => t.projectId === id)
     },
-    async editTask(id, editTask) {
-      const task = await TaskService.edit(id, editTask)
-      const idx = this.tasks.findIndex(t => t.id === id)
-      this.tasks = this.tasks.filter(t => t.id !== id)
-      this.$nextTick(() => {
-        this.tasks.splice(idx, 0, task)
-      })
+    addTask(projectId, text) {
+      this.$store.dispatch('addTask', { projectId, text })
     },
-    async editTaskState(id, editTask) {
-      await TaskService.edit(id, editTask)
+    editTask(id, editTask) {
+      this.$store.dispatch('editTask', { id, editTask })
     },
-    async deleteTask(id) {
-      await TaskService.del(id)
-      this.tasks = this.tasks.filter(t => t.id !== id)
+    editTaskState(id, editTask) {
+      this.$store.dispatch('deleteTaskState', { id, editTask })
     },
-    async addProject(newProject) {
-      const project = await ProjectService.add(newProject)
-      this.projects.unshift(project)
+    deleteTask(id) {
+      this.$store.dispatch('deleteTask', id)
     },
-    async editProject(id, editProject) {
-      await ProjectService.edit(id, editProject)
+    addProject(newProject) {
+      this.$store.dispatch('addProject', newProject)
     },
-    async deleteProject(id) {
-      await ProjectService.del(id)
-      this.projects = this.projects.filter(p => p.id !== id)
+    editProject(id, editProject) {
+      this.$store.dispatch('editProject', { id, editProject })
+    },
+    deleteProject(id) {
+      this.$store.dispatch('deleteProject', id)
     }
   }
 }

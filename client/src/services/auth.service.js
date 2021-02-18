@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '../store.js'
+import store from '../store'
 import $router from '../router'
 import { DEV_API } from './http.init'
 
