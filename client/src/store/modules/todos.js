@@ -74,7 +74,6 @@ export const todo = {
     }
   },
   getters: {
-    tasks: state => state.tasks.sort(byDate()),
     filterTasks: state => id => {
       return state.tasks.filter(t => t.projectId === id)
     },

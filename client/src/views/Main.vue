@@ -32,7 +32,7 @@ export default {
     // projects: []
   }),
   computed: {
-    ...mapGetters(['tasks', 'projects'])
+    ...mapGetters(['projects'])
   },
   async mounted() {
     await this.$store.dispatch('fetchProjects')
@@ -40,9 +40,6 @@ export default {
     await this.$store.commit('SET_POPUP', !this.projects.length)
   },
   methods: {
-    filterTasks(id) {
-      return this.tasks.filter(t => t.projectId === id)
-    },
     addTask(projectId, text) {
       this.$store.dispatch('addTask', { projectId, text })
     },
