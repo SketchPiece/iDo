@@ -76,6 +76,6 @@ database connection settings in development and production mode
 
 # Todo
 
-- [ ] Сhange the arrangement of tasks in projects
+- [x] Сhange the arrangement of tasks in projects
 - [ ] OS Mode (interacting with windows as in the operating system)
 - [ ] Mobile version
