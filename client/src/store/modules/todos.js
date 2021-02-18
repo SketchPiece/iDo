@@ -75,7 +75,10 @@ export const todo = {
   },
   getters: {
     filterTasks: state => id => {
-      return state.tasks.filter(t => t.projectId === id)
+      const priorityTasks = state.tasks.filter(t => t.priority)
+      const commonTasks = state.tasks.filter(t => !t.priority)
+      const sortedTasks = [...priorityTasks, ...commonTasks]
+      return sortedTasks.filter(t => t.projectId === id)
     },
     projects: state => state.projects.sort(byDate())
   }
