@@ -1,40 +1,42 @@
 <template>
-  <transition
-    enter-active-class="animate__animated animate__fadeIn"
-    leave-active-class="animate__animated animate__fadeOut"
-  >
-    <div v-if="dialog" @click="close" class="modal-bg"></div>
-  </transition>
-  <transition
-    enter-active-class="animate__animated animate__zoomIn"
-    leave-active-class="animate__animated animate__zoomOut"
-  >
-    <div v-if="dialog" class="modal window">
-      <div class="header">
-        <div @click="close" class="circle red first close"></div>
-        <span>Edit task</span>
-      </div>
-      <div class="main">
-        <textarea v-model="text" class="inp"></textarea>
-        <div class="controls">
-          <div class="date">
-            Deadline:
-            <div class="clear" @click="clearDate"></div>
-            <datepicker
-              v-model="deadline"
-              placeholder="Select date"
-              :typeable="true"
-              format="DD.MM.YYYY"
-            />
-          </div>
-          <div class="buttons">
-            <button @click="deleteTask" class="btn red">Delete</button>
-            <button @click="save" class="btn blue">Save</button>
+  <div>
+    <transition
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeOut"
+    >
+      <div v-if="dialog" @click="close" class="modal-bg"></div>
+    </transition>
+    <transition
+      enter-active-class="animate__animated animate__zoomIn"
+      leave-active-class="animate__animated animate__zoomOut"
+    >
+      <div v-if="dialog" class="modal window">
+        <div class="header">
+          <div @click="close" class="circle red first close"></div>
+          <span>Edit task</span>
+        </div>
+        <div class="main">
+          <textarea v-model="text" class="inp"></textarea>
+          <div class="controls">
+            <div class="date">
+              Deadline:
+              <div class="clear" @click="clearDate"></div>
+              <datepicker
+                v-model="deadline"
+                placeholder="Select date"
+                :typeable="true"
+                format="DD.MM.YYYY"
+              />
+            </div>
+            <div class="buttons">
+              <button @click="deleteTask" class="btn red">Delete</button>
+              <button @click="save" class="btn blue">Save</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <script>

@@ -1,24 +1,26 @@
 <template>
-  <transition
-    enter-active-class="animate__animated animate__fadeIn"
-    leave-active-class="animate__animated animate__fadeOut"
-  >
-    <div v-if="dialog" @click="cancel" class="modal-bg"></div>
-  </transition>
-  <transition
-    enter-active-class="animate__animated animate__zoomIn"
-    leave-active-class="animate__animated animate__zoomOut"
-  >
-    <div v-if="dialog" class="modal window">
-      <div class="main">
-        <span>Are you sure you want to delete '{{ name }}'?</span>
-        <div class="controls">
-          <button @click="cancel" class="btn dark">Cansel</button>
-          <button @click="deleteHandler" class="btn red">Delete</button>
+  <div>
+    <transition
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeOut"
+    >
+      <div v-if="dialog" @click="cancel" class="modal-bg"></div>
+    </transition>
+    <transition
+      enter-active-class="animate__animated animate__zoomIn"
+      leave-active-class="animate__animated animate__zoomOut"
+    >
+      <div v-if="dialog" class="modal window">
+        <div class="main">
+          <span>Are you sure you want to delete '{{ name }}'?</span>
+          <div class="controls">
+            <button @click="cancel" class="btn dark">Cansel</button>
+            <button @click="deleteHandler" class="btn red">Delete</button>
+          </div>
         </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <script>

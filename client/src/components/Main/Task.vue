@@ -32,7 +32,8 @@ export default {
     text: String,
     deadline: String,
     completed: Boolean,
-    priority: Boolean
+    priority: Boolean,
+    id: Number
   },
   components: {
     Checkbox
@@ -46,11 +47,17 @@ export default {
   methods: {
     checkHandler(state) {
       this.taskState = state
-      this.$emit('updateState', state)
+      this.$store.dispatch('editTaskState', {
+        id: this.id,
+        editTask: { completed: state }
+      })
     },
     updatePriority({ target: { checked } }) {
       this.taskPriority = checked
-      this.$emit('updatePriority', checked)
+      this.$store.dispatch('editTask', {
+        id: this.id,
+        editTask: { priority: checked }
+      })
     }
   },
   computed: {
@@ -110,9 +117,9 @@ export default {
     top: 10px;
     right: 10px;
   }
-  .strike {
-    padding-top: 3px;
-  }
+  // .strike {
+  //   padding-top: 3px;
+  // }
   span.expired {
     color: #cc4c4c;
   }

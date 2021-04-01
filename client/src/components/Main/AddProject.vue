@@ -1,40 +1,42 @@
 <template>
-  <transition
-    enter-active-class="animate__animated animate__fadeIn"
-    leave-active-class="animate__animated animate__fadeOut"
-  >
-    <div v-if="dialog" @click="close" class="modal-bg pf" />
-  </transition>
-  <transition
-    enter-active-class="animate__animated animate__zoomIn"
-    leave-active-class="animate__animated animate__zoomOut"
-  >
-    <div v-if="dialog" class="modal pf window">
-      <div class="header">
-        <div @click="close" class="circle red first close"></div>
-        <span>Add new project</span>
+  <div>
+    <transition
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeOut"
+    >
+      <div v-if="dialog" @click="close" class="modal-bg pf" />
+    </transition>
+    <transition
+      enter-active-class="animate__animated animate__zoomIn"
+      leave-active-class="animate__animated animate__zoomOut"
+    >
+      <div v-if="dialog" class="modal pf window">
+        <div class="header">
+          <div @click="close" class="circle red first close"></div>
+          <span>Add new project</span>
+        </div>
+        <div class="main">
+          <input
+            ref="input"
+            @keypress.enter="save"
+            v-model="projectName"
+            class="inp"
+            type="text"
+          />
+          <button @click="save" class="add">+</button>
+        </div>
       </div>
-      <div class="main">
-        <input
-          ref="input"
-          @keypress.enter="save"
-          v-model="projectName"
-          class="inp"
-          type="text"
-        />
-        <button @click="save" class="add">+</button>
-      </div>
-    </div>
-  </transition>
-  <button @click="open" class="add-project-btn">
-    <span>+</span>
-  </button>
-  <transition
-    enter-active-class="animate__animated animate__zoomIn"
-    leave-active-class="animate__animated animate__zoomOut"
-  >
-    <div v-if="popup" class="popup">Add your first project</div>
-  </transition>
+    </transition>
+    <button @click="open" class="add-project-btn">
+      <span>+</span>
+    </button>
+    <transition
+      enter-active-class="animate__animated animate__zoomIn"
+      leave-active-class="animate__animated animate__zoomOut"
+    >
+      <div v-if="popup" class="popup">Add your first project</div>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -59,7 +61,7 @@ export default {
     save() {
       if (!this.projectName) return
       this.dialog = false
-      this.$emit('create', { name: this.projectName })
+      this.$store.dispatch('addProject', { name: this.projectName })
       this.projectName = ''
     }
   },
@@ -131,8 +133,8 @@ export default {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  top: -20px;
   left: 0;
+  top: 0;
   animation-duration: 0.5s;
 }
 

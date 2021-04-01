@@ -1,7 +1,7 @@
 import { TaskService } from '../../services/task.service'
 import { ProjectService } from '../../services/project.service'
 import { byDate } from '../../utils'
-// import { byDate } from '../../utils'
+
 export const todo = {
   state: {
     projects: [],
@@ -61,13 +61,11 @@ export const todo = {
     },
     EDIT_TASK(state, task) {
       state.tasks = state.tasks.map(t => {
-        // console.log(t, task, t.id === task.id)
         if (t.id === task.id) {
           return task
         }
         return t
       })
-      // console.log(state.tasks, task)
     },
     DELETE_TASK(state, id) {
       state.tasks = state.tasks.filter(t => t.id !== id)

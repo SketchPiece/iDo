@@ -6,27 +6,23 @@
     </div>
     <div class="main">
       <div class="tasks">
-        <Task
-          v-for="task of tasks"
-          :key="task.id"
-          @click="editTask(task.id)"
-          :text="task.text"
-          :deadline="task.deadline"
-          :completed="task.completed"
-          :priority="task.priority"
-          @updatePriority="
-            state =>
-              $emit('updateTaskPriority', task.id, {
-                priority: state
-              })
-          "
-          @updateState="
-            state =>
-              $emit('updateTaskState', task.id, {
-                completed: state
-              })
-          "
-        />
+        <transition-group
+          enter-active-class="animate__animated animate__fadeIn"
+          leave-active-class="animate__animated animate__fadeOut"
+          move-class="tasks-move"
+        >
+          <Task
+            v-for="task of tasks"
+            :key="task.id"
+            class="fade-animation-half"
+            :id="task.id"
+            @click="editTask(task.id)"
+            :text="task.text"
+            :deadline="task.deadline"
+            :completed="task.completed"
+            :priority="task.priority"
+          />
+        </transition-group>
       </div>
       <TaskModal ref="task" />
       <DeleteModal ref="delete" />
@@ -61,9 +57,6 @@ export default {
     },
     id: {
       type: Number
-    },
-    tasks: {
-      type: Array
     }
   },
   components: {
@@ -82,32 +75,42 @@ export default {
   methods: {
     addTask() {
       if (!this.inputText) return
-      this.$emit('addTask', this.inputText)
+      this.$store.dispatch('addTask', {
+        projectId: this.id,
+        text: this.inputText
+      })
       this.inputText = ''
     },
     async editTask(id) {
-      const edit = await this.$refs.task.edit(this.tasks.find(t => t.id === id))
+      const taskToEdit = this.tasks.find(t => t.id === id)
+      const edit = await this.$refs.task.edit(taskToEdit)
       if (!edit) return
       if (edit.status === 'delete') {
-        return this.$emit('deleteTask', id)
+        return this.$store.dispatch('deleteTask', id)
       } else if (edit.status === 'edit') {
-        return this.$emit('editTask', id, { ...edit.task, projectId: this.id })
+        return this.$store.dispatch('editTask', {
+          id,
+          editTask: { ...edit.task, projectId: this.id }
+        })
       }
     },
     async deleteProject() {
       const del = await this.$refs.delete.open(this.projectName)
       if (!del) return
-      this.$emit('deleteProject', this.id)
+      this.$store.dispatch('deleteProject', this.id)
     }
   },
   computed: {
-    tasksFiltered() {
-      return this.tasks.filter(t => t.projectId === this.id)
+    tasks() {
+      return this.$store.getters.filterTasks(this.id)
     }
   },
   watch: {
     projectName: _.debounce(function(name) {
-      this.$emit('editProject', { name })
+      this.$store.dispatch('editProject', {
+        id: this.id,
+        editProject: { name }
+      })
     }, 600)
   }
 }
@@ -116,6 +119,9 @@ export default {
 <style lang="scss" scoped>
 .tasks {
   min-height: 150px;
+}
+.tasks-move {
+  transition: transform 0.6s ease;
 }
 .main {
   position: relative;

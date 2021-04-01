@@ -1,20 +1,18 @@
 <template>
   <div class="container">
-    <Project
-      v-for="project of projects"
-      :id="project.id"
-      :key="project.id"
-      :name="project.name"
-      :tasks="$store.getters.filterTasks(project.id)"
-      @addTask="text => addTask(project.id, text)"
-      @editTask="editTask"
-      @updateTaskState="editTaskState"
-      @updateTaskPriority="editTask"
-      @deleteTask="deleteTask"
-      @editProject="p => editProject(project.id, p)"
-      @deleteProject="deleteProject"
-    />
-    <AddProject @create="addProject" />
+    <transition-group
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeOut"
+    >
+      <Project
+        class="fade-animation-half"
+        v-for="project of projects"
+        :id="project.id"
+        :key="project.id"
+        :name="project.name"
+      />
+    </transition-group>
+    <AddProject />
   </div>
 </template>
 
@@ -38,29 +36,12 @@ export default {
     await this.$store.dispatch('fetchProjects')
     await this.$store.dispatch('fetchTasks')
     await this.$store.commit('SET_POPUP', !this.projects.length)
-  },
-  methods: {
-    addTask(projectId, text) {
-      this.$store.dispatch('addTask', { projectId, text })
-    },
-    editTask(id, editTask) {
-      this.$store.dispatch('editTask', { id, editTask })
-    },
-    editTaskState(id, editTask) {
-      this.$store.dispatch('deleteTaskState', { id, editTask })
-    },
-    deleteTask(id) {
-      this.$store.dispatch('deleteTask', id)
-    },
-    addProject(newProject) {
-      this.$store.dispatch('addProject', newProject)
-    },
-    editProject(id, editProject) {
-      this.$store.dispatch('editProject', { id, editProject })
-    },
-    deleteProject(id) {
-      this.$store.dispatch('deleteProject', id)
-    }
   }
 }
 </script>
+
+<style>
+.fade-animation-half {
+  animation-duration: 0.5s;
+}
+</style>

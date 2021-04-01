@@ -27,11 +27,9 @@ export class ProjectsService {
   }
 
   private async getAndCheckUser(id, userId) {
-    console.log(id, userId)
     const projectWithUser = await this.projectRepository.findOne(id, {
       relations: ['user']
     })
-    console.log('proj', projectWithUser)
     if (projectWithUser.user.id !== userId) throw new ForbiddenException()
     const { user, ...project } = projectWithUser
     return project
