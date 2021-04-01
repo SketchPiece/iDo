@@ -55,8 +55,8 @@ export default {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: calc(100% + 10px);
-  top: -10px;
+  height: 100%;
+  top: 0;
   border-bottom-left-radius: 11px;
   border-bottom-right-radius: 11px;
   animation-duration: 0.5s;

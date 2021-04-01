@@ -125,6 +125,7 @@ export default {
 }
 .main {
   position: relative;
+  padding-top: 10px;
 }
 .project {
   margin-top: 25px;

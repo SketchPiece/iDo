@@ -88,6 +88,7 @@ export default {
   color: rgb(226, 226, 226);
   user-select: none;
   margin: 10px;
+  margin-top: 0;
   border-radius: 10px;
   position: relative;
   transition: 0.3s;
